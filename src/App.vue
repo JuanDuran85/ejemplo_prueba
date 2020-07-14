@@ -9,13 +9,17 @@
 <script>
 import Navegacion from './components/Navegacion.vue';
 import PieDePagina from './components/PieDePagina.vue';
+import { conexApi } from "./config/conexionApi";
 
 export default {
   name: 'App',
   components: { 
     Navegacion,
     PieDePagina 
-  }
+  },
+  mounted() {
+    conexApi();
+  },
 }
 </script>
 
