@@ -20,6 +20,9 @@ export default new Vuex.Store({
   actions: {
     infoApi(context,infoApiRecibida){
       context.commit('mutandoInfoApi',infoApiRecibida);
+    },
+    guardandoComentario(context,infoComentRecibido){
+      console.log(infoComentRecibido);
     }
   }
 })

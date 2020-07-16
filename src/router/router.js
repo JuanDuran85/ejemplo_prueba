@@ -19,7 +19,12 @@ Vue.use(VueRouter)
     path: '/administracion',
     name: 'Administracion',
     component: () => import('../views/Administracion.vue')
-  }
+  },
+  {
+    path: '/comentarios/:index',
+    name: 'Comentarios',
+    component: () => import('../views/Comentarios.vue')
+  },
 ]
 
 const router = new VueRouter({

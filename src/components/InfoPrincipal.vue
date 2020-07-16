@@ -8,6 +8,7 @@
           <div class="card-body">
             <h5 class="card-title">{{item.name}}</h5>
             <p class="card-text">{{item.listeners}} - {{item.playcount}}</p>
+            <a class="btn btn-primary mx-3" @click.prevent="enviarInfoComentario(index)">Comentario</a>
             <a :href="item.url" class="btn btn-primary" target="_blank">Ir al Sitio</a>
         </div>
     </div>
@@ -29,6 +30,11 @@ export default {
       return this.$store.getters.enviarInfoApi;
     }
   },
+  methods: {
+    enviarInfoComentario(index){
+      this.$router.push(`/comentarios/${index}`);
+    }
+  }
 }
 </script>
 
