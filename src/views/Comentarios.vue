@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <h1>Comentarios de {{$store.getters.enviarInfoApi[$route.params.index].name}}</h1>
+      <h1>Comentarios de {{nombre}}</h1>
       <form>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Agregar Comentario</label>
@@ -16,7 +16,10 @@ export default {
     name: 'Comentarios',
     data() {
         return {
-            comentario: ''
+            comentario: '',
+            nombre: this.$store.getters.enviarInfoApi[this.$route.params.index].name,
+            indexURL: this.$route.params.index,
+            imagen: this.$store.getters.enviarInfoApi[this.$route.params.index].image[3]['#text']
         }
     },
     methods: {
@@ -26,9 +29,13 @@ export default {
             } else {
                 let datosAux = {
                     comentario: this.comentario,
-                    name: this.$store.getters.enviarInfoApi[this.$route.params.index].name
-                }
+                    name: this.nombre,
+                    url: this.indexURL + "-" + this.nombre.replace(' ','-').toLowerCase(),
+                    index: this.indexURL,
+                    img: this.imagen
+                };
                 this.$store.dispatch('guardandoComentario',datosAux);
+                this.$router.push(`/articulos/${datosAux.url}`);
             }
         }
     },

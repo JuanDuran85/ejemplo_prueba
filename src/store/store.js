@@ -6,15 +6,22 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     infoList: [],
+    listaComentarios: []
   },
   getters: {
     enviarInfoApi(state){
       return state.infoList;
+    },
+    enviarListaComentarios(state){
+      return state.listaComentarios;
     }
   },
   mutations: {
     mutandoInfoApi(state,infoApiRecibida){
       state.infoList = infoApiRecibida;
+    },
+    guardaComentario(state,infoComentRecibido){
+      state.listaComentarios.push(infoComentRecibido); 
     }
   },
   actions: {
@@ -22,7 +29,7 @@ export default new Vuex.Store({
       context.commit('mutandoInfoApi',infoApiRecibida);
     },
     guardandoComentario(context,infoComentRecibido){
-      console.log(infoComentRecibido);
+      context.commit('guardaComentario',infoComentRecibido);
     }
   }
 })

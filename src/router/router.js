@@ -11,7 +11,7 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/articulos',
+    path: '/articulos/:url',
     name: 'Articulos',
     component: () => import('../views/Articulos.vue')
   },
